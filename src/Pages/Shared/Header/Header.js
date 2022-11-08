@@ -4,7 +4,7 @@ import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import styles from "./Header.module.css";
 
 function Header() {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   return (
     <nav className={styles.navbar} >
@@ -31,7 +31,7 @@ function Header() {
 
       {/* shows when user is logged in */}
       {
-        user ? <button className={styles.logout}>Log out</button> : ''
+        user ? <button onClick={logOut} className={styles.logout}>Log out</button> : ''
       }
     </nav>
   );
