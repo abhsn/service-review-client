@@ -31,7 +31,7 @@ function Header() {
 
       {/* shows when user is logged in */}
       {
-        user ? <Link className={styles.navlink}>Log out</Link> : ''
+        user ? <button className={styles.logout}>Log out</button> : ''
       }
     </nav>
   );

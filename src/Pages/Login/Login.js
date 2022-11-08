@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import "./Login.module.css";
 import styles from "./Login.module.css";
+import { FcGoogle } from "react-icons/fc";
 
 function Login() {
   const { logIn, googleSignIn } = useContext(AuthContext);
@@ -20,7 +21,6 @@ function Login() {
   const handleGoogleLogIn = async () => {
     try {
       const result = await googleSignIn();
-      console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -37,11 +37,14 @@ function Login() {
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" required />
       </div>
-      <div>
-        <input onClick={handleLogIn} className={styles.loginButton} type="submit" value="Login" />
-      </div>
-      <div>
-        <button onClick={handleGoogleLogIn}>Login with Google</button>
+      <div className={styles.buttonContainer}>
+        <div>
+          <input onClick={handleLogIn} className={styles.loginButton} type="submit" value="Login" />
+        </div>
+        <small>or</small>
+        <div>
+          <button onClick={handleGoogleLogIn} className={styles.loginButton}><span className={styles.googleButton}><FcGoogle /></span>Login with Google</button>
+        </div>
       </div>
     </form>
   );
