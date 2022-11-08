@@ -23,14 +23,7 @@
   gap: 5px;
 }
 
-.emailContainer > input {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  font-size: 1.5rem;
-  padding: 0.35rem;
-  border-radius: 5px;
-}
-
-.passwordContainer > input {
+.emailContainer > input, .passwordContainer > input {
   border: 1px solid rgba(0, 0, 0, 0.3);
   font-size: 1.5rem;
   padding: 0.35rem;
@@ -41,7 +34,7 @@
   border: none;
   background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 10px 30px;
   font-size: 1.15rem;
   border-radius: 5px;
 }
