@@ -1,0 +1,51 @@
+.form {
+  width: 50%; 
+  margin: auto;
+  display: flex;
+  margin-top: 50px;
+  padding: 40px 0;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.formTitle {
+  font-size: 35px;
+}
+
+.emailContainer, .passwordContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.15rem;
+  gap: 5px;
+}
+
+.emailContainer > input {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 1.5rem;
+  padding: 0.35rem;
+  border-radius: 5px;
+}
+
+.passwordContainer > input {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 1.5rem;
+  padding: 0.35rem;
+  border-radius: 5px;
+}
+
+.loginButton {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 1.15rem;
+  border-radius: 5px;
+}
+
+.loginButton:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}

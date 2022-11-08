@@ -1,23 +1,17 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-nav {
+.navbar {
   display: flex;
   gap: 20px;
   padding: 10px 20px;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
-a {
+.navlink {
   text-decoration: none;
   color: black;
   padding: 10px;
 }
 
-a:hover {
+.navlink:hover {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
