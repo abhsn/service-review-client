@@ -5,6 +5,7 @@ import styles from "./Header.module.css";
 
 function Header() {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
 
   return (
     <nav className={styles.navbar} >
@@ -32,6 +33,9 @@ function Header() {
       {/* shows when user is logged in */}
       {
         user ? <button onClick={logOut} className={styles.logout}>Log out</button> : ''
+      }
+      {
+        user ? <img src={user.photoURL} alt={user.displayName} /> : ''
       }
     </nav>
   );

@@ -3,6 +3,7 @@ import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import "./Login.module.css";
 import styles from "./Login.module.css";
 import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 function Login() {
   const { logIn, googleSignIn } = useContext(AuthContext);
@@ -46,6 +47,7 @@ function Login() {
           <button onClick={handleGoogleLogIn} className={styles.loginButton}><span className={styles.googleButton}><FcGoogle /></span>Login with Google</button>
         </div>
       </div>
+      <small>Don't have an account? <Link to="/register">Register here</Link>.</small>
     </form>
   );
 }

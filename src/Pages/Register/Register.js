@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import styles from "./Register.module.css";
 
@@ -36,8 +37,8 @@ function Register() {
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" required />
       </div>
-
       <input className={styles.loginButton} type="submit" value="Register" />
+      <small>Already have an account? <Link to="/login">Login here</Link>.</small>
     </form>
   );
 }
