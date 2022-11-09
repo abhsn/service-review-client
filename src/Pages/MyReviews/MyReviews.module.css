@@ -4,3 +4,8 @@
 	gap: 20px;
 	padding: 20px;
 }
+
+.spinnerContainer {
+	display: flex;
+	justify-content: center;
+}

@@ -3,10 +3,13 @@ import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import "./Login.module.css";
 import styles from "./Login.module.css";
 import { FcGoogle } from "react-icons/fc";
-import { json, Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Login() {
 	const { logIn, googleSignIn } = useContext(AuthContext);
+	const location = useLocation();
+	const navigate = useNavigate();
+	const from = location.state?.from?.pathname || "/";
 
 	const handleLogIn = () => {
 		const email = document.getElementById('email').value;
@@ -14,7 +17,6 @@ function Login() {
 		logIn(email, password)
 			.then(result => {
 				const user = result.user;
-				// console.log(user);
 
 				const currentUser = {
 					uid: user.uid
@@ -32,6 +34,7 @@ function Login() {
 					.then(data => {
 						localStorage.setItem('token', data.token);
 					});
+				navigate(from, { replace: true });
 			})
 	};
 
@@ -58,6 +61,7 @@ function Login() {
 					.then(data => {
 						localStorage.setItem('token', data.token);
 					});
+				navigate(from, { replace: true });
 			}
 		} catch (err) {
 			console.log(err);
