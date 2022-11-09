@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import FullPhoto from "../FullPhoto/FullPhoto";
 import styles from "./Service.module.css";
 
 function Service({ service }) {
 	const { name, image, details, price, _id } = service;
+	const [fullPhoto, setFullPhoto] = useState(false);
+
+	useEffect(() => {
+		const top = document.documentElement.scrollTop;
+		if (fullPhoto) {
+			window.onscroll = () => window.scrollTo(0, top);
+		} else {
+			window.onscroll = () => { };
+		}
+	}, [fullPhoto]);
+
 	return (
 		<React.Fragment>
 			{/* <style dangerouslySetInnerHTML={{ */}
@@ -15,7 +27,10 @@ function Service({ service }) {
 
 			<div className={styles.service}>
 				<h4>{name}</h4>
-				<img src={image} alt="" className={styles.image} />
+				<img onClick={() => setFullPhoto(true)} src={image} alt="" className={styles.image} />
+				{
+					fullPhoto ? <FullPhoto id={_id} name={name} image={image} fullPhoto={fullPhoto} setFullPhoto={setFullPhoto} /> : <React.Fragment></React.Fragment>
+				}
 				<p>{details}</p>
 				<small>Price: <strong>${price}</strong></small>
 				<Link className={styles.detailsButton} to={`/services/${_id}`}>Details</Link>
