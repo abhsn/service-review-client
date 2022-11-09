@@ -22,11 +22,9 @@ function Home() {
       {!services ?
         <div className={styles.spinnerContainer}>
           <Spinner />
-        </div> : ''
-      }
-      {services ?
-        <Services services={services} /> : ''
-      }
+        </div> : ''}
+
+      {services ? <Services services={services} /> : ''}
     </React.Fragment>
   );
 }
