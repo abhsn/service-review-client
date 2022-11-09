@@ -30,3 +30,9 @@
 	object-fit: cover;
 	width: 100%;
 }
+
+.reviewsContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
