@@ -10,6 +10,7 @@ const googleProvider = new GoogleAuthProvider();
 function AuthProvider({ children }) {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [unauthorized, setUnauthorized] = useState(false);
 
 	const logIn = (email, password) => {
 		setLoading(true);
@@ -40,7 +41,7 @@ function AuthProvider({ children }) {
 		return () => unSubscribe;
 	}, []);
 
-	const authinfo = { logIn, googleSignIn, user, setUser, logOut, register, loading };
+	const authinfo = { logIn, googleSignIn, user, setUser, logOut, register, loading, unauthorized, setUnauthorized };
 
 	return (
 		<AuthContext.Provider value={authinfo}>

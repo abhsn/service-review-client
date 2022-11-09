@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { setTile } from "../../utils/setTitle";
 import Service from "../Service/Service";
 import styles from "./Services.module.css";
 
 function Services({ services }) {
+	setTile('Services');
 	return (
 		<section className={styles.servicesContainer}>
 			<h3 className={styles.title}>Our Services</h3>

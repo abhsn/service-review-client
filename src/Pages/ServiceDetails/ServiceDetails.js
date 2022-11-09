@@ -4,6 +4,7 @@ import Spinner from "../../Components/Spinner/Spinner";
 import styles from "./ServiceDetails.module.css";
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider'
 import Review from "../../Components/Review/Review";
+import { setTile } from "../../utils/setTitle";
 
 function ServiceDetails() {
 	const id = useParams().id;
@@ -11,6 +12,8 @@ function ServiceDetails() {
 	const [reviews, setReviews] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const { user } = useContext(AuthContext);
+
+	setTile(`Service Details - ${service.name}`);
 
 	const { name, details, image, price } = service;
 

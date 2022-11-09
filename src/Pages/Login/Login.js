@@ -4,9 +4,11 @@ import "./Login.module.css";
 import styles from "./Login.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { setTile } from "../../utils/setTitle";
 
 function Login() {
-	const { logIn, googleSignIn } = useContext(AuthContext);
+	setTile('Login');
+	const { logIn, googleSignIn, setUnauthorized } = useContext(AuthContext);
 	const location = useLocation();
 	const navigate = useNavigate();
 	const from = location.state?.from?.pathname || "/";

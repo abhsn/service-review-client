@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom"
 import MyReview from "../../Components/MyReview/MyReview";
 import Spinner from "../../Components/Spinner/Spinner";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import { setTile } from "../../utils/setTitle";
 import styles from "./MyReviews.module.css"
 
 function MyReviews() {
+	setTile('My Reviews');
 	const [reviews, setReviews] = useState({});
-	const { loading } = useContext(AuthContext);
-	const [unauthorized, setUnauthorized] = useState(false);
+	const { loading, unauthorized, setUnauthorized } = useContext(AuthContext);
+	// const [unauthorized, setUnauthorized] = useState(false);
 
 	const id = useParams().id;
 

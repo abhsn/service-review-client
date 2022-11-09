@@ -18,7 +18,7 @@ function Service({ service }) {
 				<img src={image} alt="" className={styles.image} />
 				<p>{details}</p>
 				<small>Price: <strong>${price}</strong></small>
-				<Link className={styles.detailsButton} to={_id}>Details</Link>
+				<Link className={styles.detailsButton} to={`/services/${_id}`}>Details</Link>
 			</div>
 		</React.Fragment >
 	);
