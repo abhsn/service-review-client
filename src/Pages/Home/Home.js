@@ -4,29 +4,28 @@ import Spinner from "../../Components/Spinner/Spinner";
 import styles from "./Home.module.css";
 
 function Home() {
-  const [services, setServices] = useState(null);
+	const [services, setServices] = useState(null);
 
-  useEffect(() => {
-    fetch('http://localhost:5000/services', {
-      method: "GET",
-      headers: {
-        "isshort": true
-      }
-    })
-      .then(res => res.json())
-      .then(data => setServices(data));
-  }, []);
+	useEffect(() => {
+		fetch('http://localhost:5000/services', {
+			headers: {
+				"isshort": true
+			}
+		})
+			.then(res => res.json())
+			.then(data => setServices(data));
+	}, []);
 
-  return (
-    <React.Fragment>
-      {!services ?
-        <div className={styles.spinnerContainer}>
-          <Spinner />
-        </div> : ''}
+	return (
+		<React.Fragment>
+			{!services ?
+				<div className={styles.spinnerContainer}>
+					<Spinner />
+				</div> : ''}
 
-      {services ? <Services services={services} /> : ''}
-    </React.Fragment>
-  );
+			{services ? <Services services={services} /> : ''}
+		</React.Fragment>
+	);
 }
 
 export default Home;

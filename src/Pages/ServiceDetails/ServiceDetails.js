@@ -24,10 +24,10 @@ function ServiceDetails() {
 	}, [id]);
 
 	useEffect(() => {
-		fetch('http://localhost:5000/reviews')
+		fetch(`http://localhost:5000/reviews/${id}`)
 			.then(res => res.json())
 			.then(data => setReviews(data));
-	}, []);
+	}, [id]);
 
 	return (
 		<div className={styles.container}>
@@ -54,8 +54,22 @@ function ServiceDetails() {
 						{/* service reviews */}
 						<section className={styles.reviewsContainer}>
 							<h4>Reviews</h4>
+
+							{/* user can add comments here */}
 							<div>
-								{!user ? <p>Please <Link to="/login">login</Link> to submit review.</p> : ''}
+								{
+									!user ? <p>Please <Link to="/login">login</Link> to submit review.</p>
+										:
+										<div className={styles.addReviewContainer}>
+											<img src={user.photoURL} alt={user.displayName} className={styles.userPhoto} />
+											<form className={styles.addReviewForm} id="reviewForm">
+												<textarea className={styles.addReviewField} name="addReview" id="addReview" rows="3" form="reviewForm" required></textarea>
+												<div>
+													<input type="submit" value="Add Review" className={styles.reviewSubmit} />
+												</div>
+											</form>
+										</div>
+								}
 							</div>
 							<div>
 								{

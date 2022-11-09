@@ -31,6 +31,41 @@
 	width: 100%;
 }
 
+.userPhoto {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.addReviewContainer {
+	display: flex;
+	/* flex-direction: column; */
+	gap: 10px;
+}
+
+.addReviewForm {
+	width: 350px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.addReviewField {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	font-size: 1rem;
+	padding: 5px;
+	resize: none;
+}
+
+.reviewSubmit {
+	border: none;
+	padding: 10px;
+	font-size: 15px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
 .reviewsContainer {
 	display: flex;
 	flex-direction: column;

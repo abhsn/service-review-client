@@ -3,7 +3,7 @@ import styles from "./Review.module.css";
 function Review({ review }) {
 	const { name, comment, time, userId } = review;
 	const date = new Date(parseFloat(time));
-	const month = date.toLocaleString('default', { month: 'long' });
+	const month = date.toLocaleString('default', { month: 'short' });
 	return (
 		<div className={styles.reviewContianer}>
 			<div className={styles.reviewText}>

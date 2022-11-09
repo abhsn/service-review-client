@@ -1,0 +1,40 @@
+.myReviewContainer {
+	padding: 20px;
+	/* background-color: aquamarine; */
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.reviewEditForm {
+	width: 50%;
+	display: flex;
+	gap: 10px;
+}
+
+.editField {
+	width: 100%;
+	resize: none;
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 1rem;
+}
+
+.editSubmitButtonContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.editButton,
+.submitButton,
+.cancelButton {
+	background-color: rgba(0, 0, 0, 0.1);
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	border: none;
+	font-size: 1rem;
+}

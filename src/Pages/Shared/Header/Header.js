@@ -16,7 +16,7 @@ function Header() {
 			{
 				user ?
 					<React.Fragment>
-						<Link className={styles.navlink} to="/reviews">My Reviews</Link>
+						<Link className={styles.navlink} to={`/reviews/${user.uid}`}>My Reviews</Link>
 						<Link className={styles.navlink} to="/add">Add Services</Link>
 					</React.Fragment>
 					: ''
@@ -35,7 +35,7 @@ function Header() {
 				user ? <button onClick={logOut} className={styles.logout}>Log out</button> : ''
 			}
 			{
-				user ? <img src={user.photoURL} alt={user.displayName} /> : ''
+				user ? <img src={user.photoURL} alt={user.displayName} className={styles.userImage} /> : ''
 			}
 		</nav>
 	);
