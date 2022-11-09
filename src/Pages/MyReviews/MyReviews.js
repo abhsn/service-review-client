@@ -22,7 +22,7 @@ function MyReviews() {
 		})
 			.then(res => res.json())
 			.then(data => {
-				if (data.message === 'Unauthorized Access') {
+				if (data.message === 'Unauthorized Access' || data.message === 'Forbidden') {
 					setUnauthorized(true);
 				} else {
 					setLoading(false);
