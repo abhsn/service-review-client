@@ -30,7 +30,6 @@ function Login() {
 				})
 					.then(res => res.json())
 					.then(data => {
-						// console.log(data);
 						localStorage.setItem('token', data.token);
 					});
 			})
@@ -39,6 +38,27 @@ function Login() {
 	const handleGoogleLogIn = async () => {
 		try {
 			const result = await googleSignIn();
+			if (result) {
+				const user = result.user;
+				// console.log(user);
+
+				const currentUser = {
+					uid: user.uid
+				}
+
+				// get jwt token
+				fetch('http://localhost:5000/jwt', {
+					method: "POST",
+					headers: {
+						"content-type": "application/json"
+					},
+					body: JSON.stringify(currentUser)
+				})
+					.then(res => res.json())
+					.then(data => {
+						localStorage.setItem('token', data.token);
+					});
+			}
 		} catch (err) {
 			console.log(err);
 		}

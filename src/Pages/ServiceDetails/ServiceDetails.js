@@ -29,6 +29,38 @@ function ServiceDetails() {
 			.then(data => setReviews(data));
 	}, [id]);
 
+	const handleReviewSubmit = e => {
+		e.preventDefault();
+		const date = new Date();
+		const newReview = {
+			comment: e.target.addReview.value,
+			uid: user.uid,
+			name: user.displayName,
+			time: date.getTime(),
+			serviceId: service._id,
+			image: user.photoURL
+		}
+		fetch(`http://localhost:5000/add-review`, {
+			method: 'POST',
+			headers: {
+				"content-type": "application/json",
+				"authorization": `Bearer ${localStorage.getItem('token')}`,
+				"uid": user.uid
+			},
+			body: JSON.stringify(newReview)
+		})
+			.then(res => res.json())
+			.then(data => {
+				if (data.message === 'Unauthorized Access') {
+					console.log('unsuccessful')
+				} else {
+					const newArray = [...reviews];
+					newArray.unshift(newReview);
+					setReviews(newArray);
+				}
+			});
+	}
+
 	return (
 		<div className={styles.container}>
 			<h3 className={styles.title}>Service Details</h3>
@@ -62,7 +94,7 @@ function ServiceDetails() {
 										:
 										<div className={styles.addReviewContainer}>
 											<img src={user.photoURL} alt={user.displayName} className={styles.userPhoto} />
-											<form className={styles.addReviewForm} id="reviewForm">
+											<form onSubmit={handleReviewSubmit} className={styles.addReviewForm} id="reviewForm">
 												<textarea className={styles.addReviewField} name="addReview" id="addReview" rows="3" form="reviewForm" required></textarea>
 												<div>
 													<input type="submit" value="Add Review" className={styles.reviewSubmit} />
@@ -71,7 +103,7 @@ function ServiceDetails() {
 										</div>
 								}
 							</div>
-							<div>
+							<div className={styles.reviews}>
 								{
 									reviews.map(review => <Review key={review._id} review={review} />)
 								}
