@@ -5,7 +5,11 @@ import styles from "./Header.module.css";
 
 function Header() {
 	const { user, logOut } = useContext(AuthContext);
-	// console.log(user);
+	const handleLogout = () => {
+		logOut().then(() => {
+			localStorage.clear();
+		})
+	}
 
 	return (
 		<nav className={styles.navbar} >
@@ -32,7 +36,7 @@ function Header() {
 
 			{/* shows when user is logged in */}
 			{
-				user ? <button onClick={logOut} className={styles.logout}>Log out</button> : ''
+				user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
 			}
 			{
 				user ? <img src={user.photoURL} alt={user.displayName} className={styles.userImage} /> : ''

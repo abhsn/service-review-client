@@ -4,7 +4,7 @@ function Review({ review }) {
 	const { name, comment, time, userId, image } = review;
 	const date = new Date(parseFloat(time));
 	const month = date.toLocaleString('default', { month: 'short' });
-	// console.log()
+
 	return (
 		<div className={styles.reviewContianer}>
 			<div>
