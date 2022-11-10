@@ -1,0 +1,39 @@
+.confirmContainer {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	backdrop-filter: blur(3px);
+}
+
+.confirmBox {
+	width: 450px;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	height: 200px;
+	border-radius: 10px;
+	padding: 30px;
+	font-size: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.buttonContainer {
+	display: flex;
+	gap: 20px;
+}
+
+.button {
+	background-color: aqua;
+	border-radius: 5px;
+	border: none;
+	padding: 10px 15px;
+	font-size: 1rem;
+	cursor: pointer;
+}

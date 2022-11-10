@@ -16,6 +16,21 @@ function Login() {
 	const navigate = useNavigate();
 	const from = location.state?.from?.pathname || "/";
 
+	const getJWT = (currentUser) => {
+		fetch('http://localhost:5000/jwt', {
+			method: "POST",
+			headers: {
+				"content-type": "application/json"
+			},
+			body: JSON.stringify(currentUser)
+		})
+			.then(res => res.json())
+			.then(data => {
+				setLoading(false);
+				localStorage.setItem('token', data.token);
+			});
+	}
+
 	const handleLogIn = () => {
 		setLoading(true);
 		const email = document.getElementById('email').value;
@@ -31,18 +46,8 @@ function Login() {
 				setLoading(false);
 
 				// get jwt token
-				fetch('http://localhost:5000/jwt', {
-					method: "POST",
-					headers: {
-						"content-type": "application/json"
-					},
-					body: JSON.stringify(currentUser)
-				})
-					.then(res => res.json())
-					.then(data => {
-						setLoading(false);
-						localStorage.setItem('token', data.token);
-					});
+				getJWT(currentUser);
+
 				navigate(from, { replace: true });
 			})
 			.catch(err => {
@@ -63,26 +68,17 @@ function Login() {
 					uid: user.uid
 				}
 
+				setLoading(false);
+
 				// get jwt token
-				fetch('http://localhost:5000/jwt', {
-					method: "POST",
-					headers: {
-						"content-type": "application/json"
-					},
-					body: JSON.stringify(currentUser)
-				})
-					.then(res => {
-						setLoading(false);
-						res.json();
-					})
-					.then(data => {
-						localStorage.setItem('token', data.token);
-					});
+				getJWT(currentUser);
+
 				navigate(from, { replace: true });
 			}
 		} catch (err) {
-			console.log(err);
-		}
+			setLoading(false);
+			setError(err.message);
+		};
 	};
 
 	return (

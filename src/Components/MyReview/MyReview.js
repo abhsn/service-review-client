@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import Confirm from "../Confirm/Confirm";
 import styles from './MyReview.module.css';
 
 // review -> comment
@@ -9,6 +10,7 @@ function MyReview({ review }) {
 	const [newReview, setNewReview] = useState({ ...review });
 	const [reviewDetails, setReviewDetails] = useState({});
 	const [edit, setEdit] = useState(false);
+	const [confirm, setConfirm] = useState(false);
 	const { user } = useContext(AuthContext);
 
 	useEffect(() => {
@@ -39,6 +41,8 @@ function MyReview({ review }) {
 			});
 	}
 
+	console.log(confirm);
+
 	return (
 		<div className={styles.myReviewContainer}>
 			<h3>{reviewDetails.name}</h3>
@@ -48,13 +52,18 @@ function MyReview({ review }) {
 			</div>
 			{
 				edit ?
-					<form className={styles.reviewEditForm} onSubmit={handleEditSubmit}>
-						<textarea name="editField" placeholder={newReview.comment} id={review._id} cols="30" rows="4" className={styles.editField} required></textarea>
-						<div className={styles.editSubmitButtonContainer}>
-							<input type="submit" value="Submit" className={styles.submitButton} />
-							<button onClick={() => setEdit(false)} className={styles.cancelButton}>Cancel</button>
-						</div>
-					</form>
+					<React.Fragment>
+						<form className={styles.reviewEditForm} onSubmit={handleEditSubmit}>
+							<textarea name="editField" placeholder={newReview.comment} id={review._id} cols="30" rows="4" className={styles.editField} required></textarea>
+							<div className={styles.editSubmitButtonContainer}>
+								<input type="submit" value="Submit" className={styles.submitButton} />
+								<button onClick={() => {
+									setConfirm(true);
+								}} className={styles.cancelButton}>Cancel</button>
+							</div>
+						</form>
+						{confirm ? <Confirm setConfirm={setConfirm} setEdit={setEdit} /> : ''}
+					</React.Fragment>
 					: ''
 			}
 		</div >

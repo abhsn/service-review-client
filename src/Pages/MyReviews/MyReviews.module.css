@@ -1,4 +1,4 @@
-.reviewContainer {
+.myReviewsContainer {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -8,4 +8,10 @@
 .spinnerContainer {
 	display: flex;
 	justify-content: center;
+}
+
+.reviewsContainer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
 }
