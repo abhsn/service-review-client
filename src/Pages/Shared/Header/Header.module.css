@@ -39,6 +39,16 @@
 	display: none;
 }
 
+.hamburger {
+	display: none;
+}
+
+.desktopMenu {
+	margin-left: auto;
+	gap: 20px;
+	display: flex;
+}
+
 @media (max-width: 640px) {
 	.hamMenuContent {
 		display: flex;
