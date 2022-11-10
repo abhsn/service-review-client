@@ -52,3 +52,9 @@
 	border: thick solid #d66939;
 	/* border-radius: 5px; */
 }
+
+@media (max-width: 640px) {
+	.serviceContainer {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}

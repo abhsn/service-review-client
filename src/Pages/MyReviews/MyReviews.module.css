@@ -18,3 +18,9 @@
 	grid-template-columns: repeat(3, 1fr);
 	gap: 20px;
 }
+
+@media (max-width: 640px) {
+	.reviewsContainer {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}

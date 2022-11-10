@@ -34,3 +34,56 @@
 	object-fit: cover;
 	object-position: center;
 }
+
+.hamMenuContent {
+	display: none;
+}
+
+@media (max-width: 640px) {
+	.hamMenuContent {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 50px;
+		left: 0;
+		width: 150px;
+		/* padding: 10px 0; */
+		background-color: #050e13;
+	}
+
+	.logout {
+		padding: 0;
+	}
+
+	.hamMenuContent>a {
+		color: white;
+		text-decoration: none;
+		margin-bottom: 20px;
+	}
+
+	.whatCanDo {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.latestWorksImages {
+		grid-template-columns: repeat(1, 1fr);
+		gap: 10px;
+		/* height: 100px; */
+	}
+
+	.hamburger {
+		display: block;
+		font-size: 2rem;
+		color: white;
+		margin-left: auto;
+	}
+
+	.header {
+		padding: 5px 10px;
+		justify-content: space-between;
+	}
+
+	.desktopMenu {
+		display: none;
+	}
+}

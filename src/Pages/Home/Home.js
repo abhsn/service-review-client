@@ -7,17 +7,20 @@ import { FaCameraRetro, FaVideo, FaRegFileImage, FaMicrophone } from "react-icon
 import Footer from "../Shared/Footer/Footer";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 function Home() {
 	setTile('Home');
 	const [services, setServices] = useState(null);
+	const [showMenu, setShowMenu] = useState(false);
 	const { user, logOut } = useContext(AuthContext);
 	const handleLogout = () => {
 		logOut().then(() => {
+			// clears local storage when user is logged out
 			localStorage.clear();
 		})
 	}
-
+	// gets limited data
 	useEffect(() => {
 		fetch('https://service-review.onrender.com/services', {
 			headers: {
@@ -33,32 +36,68 @@ function Home() {
 		<React.Fragment>
 			{/* <Header /> */}
 
-
+			{/* header or banner */}
 			<div className={styles.backgroundImageContainer}>
 				<div className={styles.header}>
 					<Link to="/">Kool Photography</Link>
-					<Link className={styles.navlink} to="/services" style={{ marginLeft: "auto" }}>Services</Link>
-					{/* shows when user is logged in */}
-					{
-						user ?
-							<React.Fragment>
-								<Link className={styles.navlink} to={`/reviews/${user.uid}`}>My Reviews</Link>
-								<Link className={styles.navlink} to="/add">Add Service</Link>
-							</React.Fragment>
-							: ''
-					}
 
-					{/* publicly available link */}
-					<Link className={styles.navlink} to="/blog">Blog</Link>
-					{/* shows when the user is not loggedd in */}
-					{
-						!user ? <Link className={styles.navlink} to="/login">Login</Link> : ''
-					}
+					{/* hamburger menu for mobile */}
+					{showMenu ?
+						<div className={styles.hamMenuContent}>
+							<Link className={styles.navlink} to="/services" style={{ marginLeft: "auto" }}>Services</Link>
 
-					{/* shows when user is logged in */}
-					{
-						user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
-					}
+							{/* shows when user is logged in */}
+							{
+								user ?
+									<React.Fragment>
+										<Link className={styles.navlink} to={`/reviews/${user.uid}`}>My Reviews</Link>
+										<Link className={styles.navlink} to="/add">Add Service</Link>
+									</React.Fragment>
+									: ''
+							}
+
+							{/* publicly available link */}
+							<Link className={styles.navlink} to="/blog">Blog</Link>
+							{/* shows when the user is not loggedd in */}
+							{
+								!user ? <Link className={styles.navlink} to="/login">Login</Link> : ''
+							}
+
+							{/* shows when user is logged in */}
+							{
+								user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
+							}
+						</div> : ''}
+
+					<div className={styles.desktopMenu}>
+						<Link className={styles.navlink} to="/services" style={{ marginLeft: "auto" }}>Services</Link>
+
+						{/* shows when user is logged in */}
+						{
+							user ?
+								<React.Fragment>
+									<Link className={styles.navlink} to={`/reviews/${user.uid}`}>My Reviews</Link>
+									<Link className={styles.navlink} to="/add">Add Service</Link>
+								</React.Fragment>
+								: ''
+						}
+
+						{/* publicly available link */}
+						<Link className={styles.navlink} to="/blog">Blog</Link>
+						{/* shows when the user is not loggedd in */}
+						{
+							!user ? <Link className={styles.navlink} to="/login">Login</Link> : ''
+						}
+
+						{/* shows when user is logged in */}
+						{
+							user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
+						}
+					</div>
+
+					<div className={styles.hamburger} onClick={() => setShowMenu(!showMenu)}>
+						<GiHamburgerMenu />
+					</div>
 					{
 						user ? <img src={user.photoURL} alt={user.displayName} className={styles.userImage} /> : ''
 					}
@@ -71,6 +110,7 @@ function Home() {
 				</div>
 			</div>
 
+			{/* what can I do for you */}
 			<div className={styles.whatCanDoContainer}>
 				<h3 style={{ "textAlign": "center", "fontSize": "1.5rem" }}>What can do for you</h3>
 				<div className={styles.whatCanDo}>
@@ -100,6 +140,7 @@ function Home() {
 				</div>
 			</div>
 
+			{/* latest works */}
 			<div className={styles.latestWorks}>
 				<div className={styles.workTitle}>
 					<div></div>
@@ -113,6 +154,7 @@ function Home() {
 				</div>
 			</div>
 
+			{/* my services */}
 			{!services ?
 				<div className={styles.spinnerContainer}>
 					<Spinner />

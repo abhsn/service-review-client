@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import styles from "./Header.module.css";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 function Header() {
 	const { user, logOut } = useContext(AuthContext);
+	const [showMenu, setShowMenu] = useState(false);
 	const handleLogout = () => {
 		logOut().then(() => {
 			localStorage.clear();
@@ -14,29 +16,62 @@ function Header() {
 	return (
 		<nav className={styles.navbar} >
 			<Link className={styles.navlink} to="/">Home</Link>
-			<Link className={styles.navlink} to="/services" style={{ marginLeft: "auto" }}>Services</Link>
 
-			{/* shows when user is logged in */}
-			{
-				user ?
-					<React.Fragment>
-						<Link className={styles.navlink} to={`/reviews/${user.uid}`}>My Reviews</Link>
-						<Link className={styles.navlink} to="/add">Add Service</Link>
-					</React.Fragment>
-					: ''
-			}
+			{/* mobile */}
+			{showMenu ?
+				<div className={styles.hamMenuContent}>
+					<Link className={styles.navlink} to="/services" style={{ marginLeft: "auto" }}>Services</Link>
 
-			{/* publicly available link */}
-			<Link className={styles.navlink} to="/blog">Blog</Link>
+					{/* shows when user is logged in */}
+					{
+						user ?
+							<React.Fragment>
+								<Link className={styles.navlink} to={`/reviews/${user.uid}`}>My Reviews</Link>
+								<Link className={styles.navlink} to="/add">Add Service</Link>
+							</React.Fragment>
+							: ''
+					}
+					{/* publicly available link */}
+					<Link className={styles.navlink} to="/blog">Blog</Link>
+					{/* shows when the user is not loggedd in */}
+					{!user ? <Link className={styles.navlink} to="/login">Login</Link> : ''}
+					{!user ? <Link className={styles.navlink} to="/register">Register</Link> : ''}
+					{/* shows when user is logged in */}
+					{
+						user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
+					}
+				</div> : ''}
 
-			{/* shows when the user is not loggedd in */}
-			{!user ? <Link className={styles.navlink} to="/login">Login</Link> : ''}
-			{!user ? <Link className={styles.navlink} to="/register">Register</Link> : ''}
+			<div className={styles.desktopMenu}>
+				<Link className={styles.navlink} to="/services" style={{ marginLeft: "auto" }}>Services</Link>
 
-			{/* shows when user is logged in */}
-			{
-				user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
-			}
+				{/* shows when user is logged in */}
+				{
+					user ?
+						<React.Fragment>
+							<Link className={styles.navlink} to={`/reviews/${user.uid}`}>My Reviews</Link>
+							<Link className={styles.navlink} to="/add">Add Service</Link>
+						</React.Fragment>
+						: ''
+				}
+
+				{/* publicly available link */}
+				<Link className={styles.navlink} to="/blog">Blog</Link>
+				{/* shows when the user is not loggedd in */}
+				{
+					!user ? <Link className={styles.navlink} to="/login">Login</Link> : ''
+				}
+
+				{/* shows when user is logged in */}
+				{
+					user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
+				}
+			</div>
+
+			<div className={styles.hamburger} onClick={() => setShowMenu(!showMenu)}>
+				<GiHamburgerMenu />
+			</div>
+
 			{
 				user ? <img src={user.photoURL} alt={user.displayName} className={styles.userImage} /> : ''
 			}
