@@ -1,5 +1,104 @@
+.backgroundImageContainer {
+	width: 100%;
+	height: 100vh;
+	background: url('https://images.pexels.com/photos/108148/pexels-photo-108148.jpeg?cs=srgb&dl=pexels-kaique-rocha-108148.jpg&fm=jpg&w=1280&h=787') no-repeat center center;
+	background-size: cover;
+	box-shadow: inset 200px 200px 1000px black;
+}
+
+.backgroundTextContainer {
+	color: white;
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding-left: 50px;
+	justify-content: center;
+}
+
+.backgroundTextContainer>h1 {
+	font-size: 3rem;
+}
+
+.backgroundTextContainer>div>button {
+	background: none;
+	border: 5px solid #d66939;
+	color: #d66939;
+	font-weight: bold;
+	font-size: 1.4rem;
+	padding: 10px 50px;
+	cursor: pointer;
+}
+
 .spinnerContainer {
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
+	display: flex;
+	justify-content: center;
+	padding: 20px 0;
+}
+
+.whatCanDoContainer {
+	/* padding: 50px 0; */
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.whatCanDo {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin-top: 50px;
+	padding: 0 70px;
+	gap: 40px;
+}
+
+.whatCanDo>h3 {
+	text-align: center;
+}
+
+.whatCanDoSingle {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.whatCanDoSingle>p {
+	font-weight: bold;
+}
+
+.whatCanDoSingle>.icons {
+	font-size: 4rem;
+}
+
+.latestWorks {
+	/* padding: 50px 0; */
+	margin-top: 100px;
+}
+
+.latestWorks>.workTitle {
+	display: flex;
+	align-items: center;
+}
+
+.latestWorks>.workTitle>div {
+	width: 70%;
+	border-top: thick solid #d66939;
+}
+
+.latestWorks>.workTitle>h3 {
+	width: 30%;
+	text-align: center;
+}
+
+.latestWorksImages {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin-top: 50px;
+}
+
+.latestWorksImages>img {
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
 }

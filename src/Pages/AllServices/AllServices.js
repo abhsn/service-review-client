@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Service from "../../Components/Service/Service";
 import Spinner from "../../Components/Spinner/Spinner";
+import { setTile } from "../../utils/setTitle";
 import styles from "./AllServices.module.css";
 
 function AllServices() {
+	setTile('Services');
 	const [services, setServices] = useState(false);
 
 	useEffect(() => {

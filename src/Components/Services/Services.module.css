@@ -1,11 +1,25 @@
 .servicesContainer {
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
-	padding: 30px 0;
+	/* gap: 30px; */
+	/* padding: 30px 0; */
+	margin-top: 100px;
 }
 
 .title {
+	margin-bottom: 50px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+}
+
+.title>div {
+	width: 70%;
+	border-top: thick solid #d66939;
+}
+
+.title>h3 {
+	width: 30%;
 	text-align: center;
 	font-size: 1.35rem;
 }
@@ -15,11 +29,12 @@
 	/* margin: auto; */
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
-	padding: 0 10px;
+	gap: 30px;
+	/* padding: 0 10px; */
 }
 
 .showMoreContainer {
+	margin-top: 50px;
 	text-align: center;
 }
 
@@ -27,12 +42,13 @@
 	text-decoration: none;
 	background-color: transparent;
 	border: none;
-	color: black;
-	padding: 10px;
+	color: #d66939;
+	padding: 10px 20px;
 	cursor: pointer;
 	font-size: 1rem;
-	background-color: rgba(0, 0, 0, 0.2);
-	border-radius: 5px;
+	/* background-color: rgba(0, 0, 0, 0.2); */
+	border: 3px solid #d66939;
+	/* border-radius: 5px; */
 }
 
 .showMore:hover {
