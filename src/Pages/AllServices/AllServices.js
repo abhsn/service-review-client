@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Service from "../../Components/Service/Service";
 import Spinner from "../../Components/Spinner/Spinner";
 import { setTile } from "../../utils/setTitle";
+import Footer from "../Shared/Footer/Footer";
+import Header from "../Shared/Header/Header";
 import styles from "./AllServices.module.css";
 
 function AllServices() {
@@ -16,6 +18,7 @@ function AllServices() {
 
 	return (
 		<React.Fragment>
+			<Header />
 			<h3 className={styles.title}>All Services</h3>
 			{
 				!services ?
@@ -29,6 +32,7 @@ function AllServices() {
 						}
 					</section>
 			}
+			<Footer />
 		</React.Fragment>
 	);
 }

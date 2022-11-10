@@ -23,6 +23,11 @@
 }
 
 .detailsButton {
-	color: black;
+	/* display: inline-block; */
+	color: #d66939;
+	text-decoration: underline #d66939;
+	/* border: 2px solid #d66939; */
+	/* padding: 0 20px; */
+	font-weight: bold;
 	font-size: 1rem;
 }

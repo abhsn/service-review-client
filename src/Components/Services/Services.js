@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { setTile } from "../../utils/setTitle";
 import Service from "../Service/Service";
 import styles from "./Services.module.css";
 

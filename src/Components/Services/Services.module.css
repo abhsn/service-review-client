@@ -30,6 +30,8 @@
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 30px;
+	width: 90%;
+	margin: auto;
 	/* padding: 0 10px; */
 }
 
@@ -47,10 +49,6 @@
 	cursor: pointer;
 	font-size: 1rem;
 	/* background-color: rgba(0, 0, 0, 0.2); */
-	border: 3px solid #d66939;
+	border: thick solid #d66939;
 	/* border-radius: 5px; */
-}
-
-.showMore:hover {
-	background-color: rgba(0, 0, 0, 0.4);
 }

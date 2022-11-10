@@ -1,16 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import Confirm from "../Confirm/Confirm";
+import RemoveConfirm from "../RemoveConfirm/RemoveConfirm";
 import styles from './MyReview.module.css';
 
 // review -> comment
 // reviewDetails -> details of service
 
-function MyReview({ review }) {
+function MyReview({ review, reviews, setReviews }) {
 	const [newReview, setNewReview] = useState({ ...review });
 	const [reviewDetails, setReviewDetails] = useState({});
 	const [edit, setEdit] = useState(false);
 	const [confirm, setConfirm] = useState(false);
+	const [remove, setRemove] = useState(false);
 	const { user } = useContext(AuthContext);
 
 	useEffect(() => {
@@ -41,14 +43,13 @@ function MyReview({ review }) {
 			});
 	}
 
-	console.log(confirm);
-
 	return (
 		<div className={styles.myReviewContainer}>
 			<h3>{reviewDetails.name}</h3>
 			<p>{newReview.comment}</p>
 			<div className={styles.editButtonContainer}>
 				<button onClick={() => setEdit(true)} className={styles.editButton}>Edit</button>
+				<button onClick={() => setRemove(true)} className={styles.editButton}>Delete</button>
 			</div>
 			{
 				edit ?
@@ -66,6 +67,7 @@ function MyReview({ review }) {
 					</React.Fragment>
 					: ''
 			}
+			{remove ? <RemoveConfirm setRemove={setRemove} review={review} reviews={reviews} setReviews={setReviews} /> : ''}
 		</div >
 	);
 }

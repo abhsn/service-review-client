@@ -1,15 +1,36 @@
-.form {
-	width: 50%;
-	margin: auto;
+.loginContainer {
+	/* margin-top: 100px; */
 	display: flex;
 	margin-top: 50px;
-	padding: 40px 0;
-	border-radius: 5px;
-	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.loginImage {
+	width: 50%;
+}
+
+.formContainer {
+	/* background-color: rebeccapurple; */
+	width: 50%;
+}
+
+.form {
+	height: 100%;
+	margin: auto;
+	display: flex;
+	/* background-color: #050e13; */
+	/* color: white; */
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	gap: 25px;
+}
+
+.form>small>a {
+	color: #d66939;
+}
+
+.form>small>a:visited {
+	color: #d66939;
 }
 
 .formTitle {
@@ -26,10 +47,11 @@
 
 .emailContainer>input,
 .passwordContainer>input {
-	border: 1px solid rgba(0, 0, 0, 0.3);
+	/* border: 1px solid rgba(0, 0, 0, 0.3); */
+	border: 2px solid #d66939;
 	font-size: 1.5rem;
 	padding: 0.35rem;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 }
 
 .buttonContainer {
@@ -42,19 +64,18 @@
 
 .loginButton {
 	border: none;
-	background-color: rgba(0, 0, 0, 0.1);
+	/* background-color: rgba(0, 0, 0, 0.1); */
 	cursor: pointer;
 	padding: 10px 30px;
 	font-size: 1.15rem;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 5px;
-}
-
-.loginButton:hover {
-	background-color: rgba(0, 0, 0, 0.3);
+	color: #d66939;
+	background: none;
+	border: 2px solid #d66939;
 }
 
 .googleButton {

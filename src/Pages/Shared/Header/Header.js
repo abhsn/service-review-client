@@ -30,9 +30,8 @@ function Header() {
 			<Link className={styles.navlink} to="/blog">Blog</Link>
 
 			{/* shows when the user is not loggedd in */}
-			{
-				!user ? <Link className={styles.navlink} to="/login">Login</Link> : ''
-			}
+			{!user ? <Link className={styles.navlink} to="/login">Login</Link> : ''}
+			{!user ? <Link className={styles.navlink} to="/register">Register</Link> : ''}
 
 			{/* shows when user is logged in */}
 			{

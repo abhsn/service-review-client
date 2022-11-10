@@ -5,7 +5,7 @@ import { FaPinterestP } from "react-icons/fa";
 
 function Footer() {
 	return (
-		<section className={styles.footerContainer}>
+		<footer className={styles.footerContainer}>
 			<p>Follow me</p>
 			<div style={{
 				"fontSize": "1.5rem",
@@ -18,7 +18,7 @@ function Footer() {
 				<ImBehance />
 			</div>
 			<small>Copyleft 🄯 2022. This is website is licensed under GPLv3+. You can modify as you want.</small>
-		</section>
+		</footer>
 	);
 }
 

@@ -2,7 +2,9 @@
 	display: flex;
 	gap: 20px;
 	padding: 10px 20px;
-	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+	height: 60px;
+	background-color: #050e13;
+	color: white;
 }
 
 .navlink,
@@ -10,16 +12,19 @@
 	text-decoration: none;
 	background-color: transparent;
 	border: none;
-	color: black;
+	color: white;
 	padding: 10px;
 	cursor: pointer;
 	font-size: 1rem;
+	/* box-sizing: border-box; */
 }
 
 .navlink:hover,
 .logout:hover {
-	background-color: rgba(0, 0, 0, 0.1);
-	border-radius: 5px;
+	/* background-color: rgba(0, 0, 0, 0.1); */
+	border-bottom: 2px solid #d66939;
+	/* border: 1px solid #d66939; */
+	/* border-radius: 5px; */
 }
 
 .userImage {

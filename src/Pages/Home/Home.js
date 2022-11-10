@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Services from "../../Components/Services/Services";
 import Spinner from "../../Components/Spinner/Spinner";
 import { setTile } from "../../utils/setTitle";
@@ -6,10 +6,18 @@ import Header from "../Shared/Header/Header";
 import styles from "./Home.module.css";
 import { FaCameraRetro, FaVideo, FaRegFileImage, FaMicrophone } from "react-icons/fa";
 import Footer from "../Shared/Footer/Footer";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 function Home() {
 	setTile('Home');
 	const [services, setServices] = useState(null);
+	const { user, logOut } = useContext(AuthContext);
+	const handleLogout = () => {
+		logOut().then(() => {
+			localStorage.clear();
+		})
+	}
 
 	useEffect(() => {
 		fetch('http://localhost:5000/services', {
@@ -21,11 +29,42 @@ function Home() {
 			.then(data => setServices(data));
 	}, []);
 
+
 	return (
 		<React.Fragment>
 			{/* <Header /> */}
 
+
 			<div className={styles.backgroundImageContainer}>
+				<div className={styles.header}>
+					<Link to="/">Kool Photography</Link>
+					<Link className={styles.navlink} to="/services" style={{ marginLeft: "auto" }}>Services</Link>
+					{/* shows when user is logged in */}
+					{
+						user ?
+							<React.Fragment>
+								<Link className={styles.navlink} to={`/reviews/${user.uid}`}>My Reviews</Link>
+								<Link className={styles.navlink} to="/add">Add Service</Link>
+							</React.Fragment>
+							: ''
+					}
+
+					{/* publicly available link */}
+					<Link className={styles.navlink} to="/blog">Blog</Link>
+					{/* shows when the user is not loggedd in */}
+					{
+						!user ? <Link className={styles.navlink} to="/login">Login</Link> : ''
+					}
+
+					{/* shows when user is logged in */}
+					{
+						user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
+					}
+					{
+						user ? <img src={user.photoURL} alt={user.displayName} className={styles.userImage} /> : ''
+					}
+				</div>
+
 				<div className={styles.backgroundTextContainer}>
 					<h1>Gasper Zaldo</h1>
 					<p>I am a photographer. I like a photograph people, happy people. Life stories. I try to to do it stylish and beautiful, feelings and emotions.</p>
