@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import Services from "../../Components/Services/Services";
 import Spinner from "../../Components/Spinner/Spinner";
 import { setTile } from "../../utils/setTitle";
-import Header from "../Shared/Header/Header";
 import styles from "./Home.module.css";
 import { FaCameraRetro, FaVideo, FaRegFileImage, FaMicrophone } from "react-icons/fa";
 import Footer from "../Shared/Footer/Footer";
@@ -20,7 +19,7 @@ function Home() {
 	}
 
 	useEffect(() => {
-		fetch('http://localhost:5000/services', {
+		fetch('https://service-review.onrender.com/services', {
 			headers: {
 				"isshort": true
 			}

@@ -13,21 +13,25 @@ function AuthProvider({ children }) {
 	const [unauthorized, setUnauthorized] = useState(false);
 
 	const logIn = (email, password) => {
+		setUnauthorized(false);
 		setLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
 	const googleSignIn = () => {
+		setUnauthorized(false);
 		setLoading(true);
 		return signInWithPopup(auth, googleProvider);
 	};
 
 	const register = (email, password) => {
+		setUnauthorized(false);
 		setLoading(true);
 		return createUserWithEmailAndPassword(auth, email, password);
 	}
 
 	const logOut = () => {
+		setUnauthorized(false);
 		return signOut(auth);
 	};
 
@@ -43,7 +47,6 @@ function AuthProvider({ children }) {
 			setLoading(false);
 			currentUser ? setUser(currentUser) : setUser(null);
 		});
-
 
 		return () => unSubscribe;
 	}, []);

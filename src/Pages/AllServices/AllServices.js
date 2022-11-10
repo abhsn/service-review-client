@@ -11,7 +11,7 @@ function AllServices() {
 	const [services, setServices] = useState(false);
 
 	useEffect(() => {
-		fetch('http://localhost:5000/services')
+		fetch('https://service-review.onrender.com/services')
 			.then(res => res.json())
 			.then(data => setServices(data));
 	}, []);

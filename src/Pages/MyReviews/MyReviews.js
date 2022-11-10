@@ -12,8 +12,8 @@ function MyReviews() {
 	setTile('My Reviews');
 	const [reviews, setReviews] = useState([]);
 	const { loading, unauthorized, setUnauthorized } = useContext(AuthContext);
-	// const [unauthorized, setUnauthorized] = useState(false);
-	// console.log(reviews);
+	// setUnauthorized(false);
+	// console.log(unauthorized);
 
 	const id = useParams().id;
 

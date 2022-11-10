@@ -31,7 +31,7 @@ function Service({ service }) {
 				{
 					fullPhoto ? <FullPhoto id={_id} name={name} image={image} fullPhoto={fullPhoto} setFullPhoto={setFullPhoto} /> : <React.Fragment></React.Fragment>
 				}
-				<p>{details}</p>
+				<p>{`${details.length > 100 ? details.split('').splice(0, 100).join('') + '...' : details}`}</p>
 				<small>Price: <strong>${price}</strong></small>
 				<Link className={styles.detailsButton} to={`/services/${_id}`}>Details</Link>
 			</div>

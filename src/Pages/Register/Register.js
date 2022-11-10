@@ -16,7 +16,7 @@ function Register() {
 	const [error, setError] = useState(null);
 
 	const getJWT = (currentUser) => {
-		fetch('http://localhost:5000/jwt', {
+		fetch('https://service-review.onrender.com/jwt', {
 			method: "POST",
 			headers: {
 				"content-type": "application/json"
