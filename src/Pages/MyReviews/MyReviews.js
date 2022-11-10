@@ -18,7 +18,7 @@ function MyReviews() {
 	const id = useParams().id;
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/my-reviews/${id}`, {
+		fetch(`https://service-review.onrender.com/my-reviews/${id}`, {
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('token')}`
 			}
