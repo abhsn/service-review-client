@@ -11,6 +11,7 @@ function Login() {
 	setTile('Login');
 	const { logIn, googleSignIn } = useContext(AuthContext);
 	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(null);
 	const location = useLocation();
 	const navigate = useNavigate();
 	const from = location.state?.from?.pathname || "/";
@@ -27,6 +28,8 @@ function Login() {
 					uid: user.uid
 				}
 
+				setLoading(false);
+
 				// get jwt token
 				fetch('http://localhost:5000/jwt', {
 					method: "POST",
@@ -42,6 +45,10 @@ function Login() {
 					});
 				navigate(from, { replace: true });
 			})
+			.catch(err => {
+				setLoading(false);
+				setError(err.message);
+			});
 	};
 
 	const handleGoogleLogIn = async () => {
@@ -84,14 +91,19 @@ function Login() {
 				!loading ?
 					<form className={styles.form} onSubmit={e => e.preventDefault()}>
 						<h3 className={styles.formTitle}>Login</h3>
+
 						<div className={styles.emailContainer}>
 							<label htmlFor="email">Email</label>
 							<input type="email" id="email" name="email" required />
 						</div>
+
 						<div className={styles.passwordContainer}>
 							<label htmlFor="password">Password</label>
 							<input type="password" id="password" name="password" required />
 						</div>
+
+						{error ? <small style={{ color: "red" }}>{error}</small> : <React.Fragment></React.Fragment>}
+
 						<div className={styles.buttonContainer}>
 							<div>
 								<input onClick={handleLogIn} className={styles.loginButton} type="submit" value="Login" />

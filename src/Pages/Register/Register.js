@@ -12,6 +12,7 @@ function Register() {
 	const navigate = useNavigate();
 	const from = location.state?.from?.pathname || "/";
 	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(null);
 
 	const handleRegister = async e => {
 		e.preventDefault();
@@ -19,12 +20,20 @@ function Register() {
 		const form = e.target;
 		const email = form.email.value;
 		const password = form.password.value;
+		const confirm = form.confirm.value;
+		if (password !== confirm) {
+			setError('Password dosn\'t match');
+			setLoading(false);
+			return;
+		}
 		try {
 			const result = await register(email, password);
+			console.log(result);
 			if (result?.uid) setLoading(false);
 			navigate(from, { replace: true });
 		} catch (err) {
-			console.log(err);
+			setLoading(false);
+			setError(err.message);
 		}
 	};
 
@@ -48,6 +57,14 @@ function Register() {
 						<label htmlFor="password">Password</label>
 						<input type="password" id="password" name="password" required minLength="6" />
 					</div>
+
+					<div className={styles.fieldContainer}>
+						<label htmlFor="confirm">Confirm Password</label>
+						<input type="password" id="confirm" name="confirm" required minLength="6" />
+					</div>
+
+					{error ? <small style={{ color: "red" }}>{error}</small> : <React.Fragment></React.Fragment>}
+
 					<input className={styles.loginButton} type="submit" value="Register" />
 					<small>Already have an account? <Link to="/login">Login here</Link>.</small>
 				</form>
