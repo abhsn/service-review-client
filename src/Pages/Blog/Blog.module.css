@@ -1,0 +1,18 @@
+.blogsContainer {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.blogsTitle {
+	text-align: center;
+	font-size: 2rem;
+}
+
+.blogContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	padding: 20px;
+}

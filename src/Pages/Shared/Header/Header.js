@@ -21,7 +21,7 @@ function Header() {
 				user ?
 					<React.Fragment>
 						<Link className={styles.navlink} to={`/reviews/${user.uid}`}>My Reviews</Link>
-						<Link className={styles.navlink} to="/add">Add Services</Link>
+						<Link className={styles.navlink} to="/add">Add Service</Link>
 					</React.Fragment>
 					: ''
 			}
