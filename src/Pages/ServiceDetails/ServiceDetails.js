@@ -11,12 +11,14 @@ function ServiceDetails() {
 	const [service, setService] = useState({});
 	const [reviews, setReviews] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [des, setDes] = useState(true);
 	const { user } = useContext(AuthContext);
 
 	setTile(`Service Details - ${service.name}`);
 
 	const { name, details, image, price } = service;
 
+	// gets service details
 	useEffect(() => {
 		fetch(`http://localhost:5000/services/${id}`)
 			.then(res => res.json())
@@ -26,11 +28,16 @@ function ServiceDetails() {
 			});
 	}, [id]);
 
+	// gets descending by time reviews by default
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews/${id}`)
+		fetch(`http://localhost:5000/reviews/${id}`, {
+			headers: {
+				"descending": des
+			}
+		})
 			.then(res => res.json())
 			.then(data => setReviews(data));
-	}, [id]);
+	}, [id, des]);
 
 	const handleReviewSubmit = e => {
 		e.preventDefault();
@@ -68,7 +75,7 @@ function ServiceDetails() {
 		<div className={styles.container}>
 			<h3 className={styles.title}>Service Details</h3>
 			{/* shows spinner while the data is being loaded */}
-			{loading ? <Spinner /> : ''}
+			{loading ? <div style={{ "display": "flex", "justifyContent": "center" }}><Spinner /></div> : ''}
 
 			{/* service details section */}
 			{
@@ -89,6 +96,14 @@ function ServiceDetails() {
 						{/* service reviews */}
 						<section className={styles.reviewsContainer}>
 							<h4>Reviews</h4>
+
+							<div style={{ "display": "flex", "gap": "10px", "alignItems": "center" }}>
+								<label htmlFor="sort">Sort by time:</label>
+								<select onChange={() => setDes(!des)} name="sort" id="sort-by-time" style={{ "fontSize": "0.95rem" }}>
+									<option value="des">Descending</option>
+									<option value="asc">Ascending</option>
+								</select>
+							</div>
 
 							{/* user can add comments here */}
 							<div>
