@@ -20,7 +20,7 @@ function Header() {
 			{/* mobile */}
 			{showMenu ?
 				<div className={styles.hamMenuContent}>
-					<Link className={styles.navlink} to="/services" style={{ marginLeft: "auto" }}>Services</Link>
+					<Link className={styles.navlink} to="/services">Services</Link>
 
 					{/* shows when user is logged in */}
 					{
@@ -38,7 +38,7 @@ function Header() {
 					{!user ? <Link className={styles.navlink} to="/register">Register</Link> : ''}
 					{/* shows when user is logged in */}
 					{
-						user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
+						user ? <a onClick={handleLogout} className={styles.logout}>Log out</a> : ''
 					}
 				</div> : ''}
 

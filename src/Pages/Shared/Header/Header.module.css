@@ -49,26 +49,29 @@
 	display: flex;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
 	.hamMenuContent {
 		display: flex;
 		flex-direction: column;
 		position: absolute;
-		top: 50px;
+		top: 60px;
 		left: 0;
-		width: 150px;
+		right: 0;
+/*		width: 150px; */
 		/* padding: 10px 0; */
 		background-color: #050e13;
 	}
 
 	.logout {
-		padding: 0;
+/*		padding: 0; */
 	}
 
 	.hamMenuContent>a {
 		color: white;
 		text-decoration: none;
-		margin-bottom: 20px;
+/*		margin-bottom: 20px; */
+		text-align: center;
+		padding: 20px;
 	}
 
 	.whatCanDo {
