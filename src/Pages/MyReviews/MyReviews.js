@@ -33,9 +33,9 @@ function MyReviews() {
 			});
 	}, [id]);
 	return (
-		<div>
+		<div style={{height: '100vh', display: 'flex', flexDirection: 'column'}}>
 			<Header />
-			<div className={styles.myReviewsContainer}>
+			<div className={styles.myReviewsContainer} style={{flexGrow: 1}}>
 				<h3 style={{ "textAlign": "center" }}>My Reviews</h3>
 				{
 					unauthorized ? <h3>Unauthorized Access. Please try to re-<Link to="/login">login</Link>.</h3> : ''
