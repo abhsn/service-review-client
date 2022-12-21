@@ -7,6 +7,7 @@ import Review from "../../Components/Review/Review";
 import { setTile } from "../../utils/setTitle";
 import Header from "../Shared/Header/Header";
 import Footer from "../Shared/Footer/Footer";
+import { FiUser } from "react-icons/fi";
 
 function ServiceDetails() {
 	const id = useParams().id;
@@ -57,7 +58,7 @@ function ServiceDetails() {
 			method: 'POST',
 			headers: {
 				"content-type": "application/json",
-				"authorization": `Bearer ${localStorage.getItem('token')}`,
+				"authorization": `Bearer ${user.accessToken}`,
 				"uid": user.uid
 			},
 			body: JSON.stringify(newReview)
@@ -116,7 +117,12 @@ function ServiceDetails() {
 										!user ? <p>Please <Link to="/login" state={{ from: location }} replace>login</Link> to submit review.</p>
 											:
 											<div className={styles.addReviewContainer}>
-												<img src={user.photoURL} alt={user.displayName} className={styles.userPhoto} />
+												{
+													user && user.photoURL && <img src={user.photoURL} alt={user.displayName} className={styles.userImage} />
+												}
+												{
+													user && !user.photoURL && <span style={{ fontSize: '2rem' }}><FiUser /></span>
+												}
 												<form onSubmit={handleReviewSubmit} className={styles.addReviewForm} id="reviewForm">
 													<textarea className={styles.addReviewField} name="addReview" id="addReview" rows="3" form="reviewForm" required></textarea>
 													<div>

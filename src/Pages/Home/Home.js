@@ -8,12 +8,14 @@ import Footer from "../Shared/Footer/Footer";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { FiUser } from "react-icons/fi";
 
 function Home() {
 	setTile('Home');
 	const [services, setServices] = useState(null);
 	const [showMenu, setShowMenu] = useState(false);
 	const { user, logOut } = useContext(AuthContext);
+	console.log(user);
 	const handleLogout = () => {
 		logOut().then(() => {
 			// clears local storage when user is logged out
@@ -44,7 +46,7 @@ function Home() {
 					{/* hamburger menu for mobile */}
 					{showMenu ?
 						<div className={styles.hamMenuContent}>
-							<Link className={styles.navlink} to="/services" style={{ marginLeft: "auto" }}>Services</Link>
+							<Link className={styles.navlink} to="/services">Services</Link>
 
 							{/* shows when user is logged in */}
 							{
@@ -65,7 +67,7 @@ function Home() {
 
 							{/* shows when user is logged in */}
 							{
-								user ? <button onClick={handleLogout} className={styles.logout}>Log out</button> : ''
+								user ? <a onClick={handleLogout} className={styles.logout}>Log out</a> : ''
 							}
 						</div> : ''}
 
@@ -99,7 +101,10 @@ function Home() {
 						<GiHamburgerMenu />
 					</div>
 					{
-						user ? <img src={user.photoURL} alt={user.displayName} className={styles.userImage} /> : ''
+						user && user.photoURL && <img src={user.photoURL} alt={user.displayName} className={styles.userImage} />
+					}
+					{
+						user && !user.photoURL && <span style={{ color: 'white', fontSize: '2rem' }}><FiUser /></span>
 					}
 				</div>
 

@@ -18,3 +18,9 @@
 	width: 40%;
 	gap: 5px;
 }
+
+@media (max-width: 428px) {
+	.reviewText {
+		width: 100%;
+	}
+}

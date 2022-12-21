@@ -70,7 +70,7 @@ function Register() {
 	};
 
 	return (
-		<React.Fragment>
+		<div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
 			<Header />
 			{!loading ?
 				<div className={styles.registerContainer}>
@@ -90,8 +90,8 @@ function Register() {
 							</div>
 
 							<div className={styles.fieldContainer}>
-								<label htmlFor="url">PhotoURL</label>
-								<input type="url" id="url" name="url" required />
+								<label htmlFor="url">PhotoURL (optional)</label>
+								<input type="url" id="url" name="url" />
 							</div>
 
 							<div className={styles.fieldContainer}>
@@ -112,12 +112,12 @@ function Register() {
 					</div>
 				</div>
 				:
-				<div className={styles.spinnerContainer}>
+				<div style={{ flexGrow: 1 }} className={styles.spinnerContainer}>
 					<Spinner />
 				</div>
 			}
 			<Footer />
-		</React.Fragment>
+		</div>
 	);
 }
 

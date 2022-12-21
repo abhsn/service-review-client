@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import styles from "./Header.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { FiUser } from "react-icons/fi";
 
 function Header() {
 	const { user, logOut } = useContext(AuthContext);
@@ -73,7 +74,10 @@ function Header() {
 			</div>
 
 			{
-				user ? <img src={user.photoURL} alt={user.displayName} className={styles.userImage} /> : ''
+				user && user.photoURL && <img src={user.photoURL} alt={user.displayName} className={styles.userImage} />
+			}
+			{
+				user && !user.photoURL && <span style={{ color: 'white', fontSize: '2rem' }}><FiUser /></span>
 			}
 		</nav>
 	);

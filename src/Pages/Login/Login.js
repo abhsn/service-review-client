@@ -84,14 +84,14 @@ function Login() {
 	};
 
 	return (
-		<React.Fragment>
+		<div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
 			{
 				user ? <Navigate to="/login" state={{ from: location }} replace ></Navigate> : ''
 			}
 			<Header />
 			{
 				!loading ?
-					<div className={styles.loginContainer}>
+					<div style={{ flexGrow: 1 }} className={styles.loginContainer}>
 						{/* <img className={styles.loginImage} src="https://downloadscdn5.freepik.com/download_vector/jpg/114/114360/4/4957/4957136_4957136.jpg?token=exp=1668081663~hmac=ac3c8303a6094600c794c25418a3bbcf" alt="" /> */}
 						<div className={styles.formContainer}>
 							<form className={styles.form} onSubmit={e => e.preventDefault()}>
@@ -123,12 +123,12 @@ function Login() {
 						</div>
 					</div>
 					:
-					<div className={styles.spinnerContainer}>
+					<div style={{ flexGrow: 1 }} className={styles.spinnerContainer}>
 						<Spinner />
 					</div>
 			}
 			<Footer />
-		</React.Fragment >
+		</div>
 	);
 }
 
