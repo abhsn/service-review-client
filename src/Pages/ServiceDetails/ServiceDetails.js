@@ -75,9 +75,9 @@ function ServiceDetails() {
 	}
 
 	return (
-		<div>
+		<div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
 			<Header />
-			<div className={styles.container}>
+			<div className={styles.container} style={{ flexGrow: 1 }}>
 				<h3 className={styles.title}>Service Details</h3>
 				{/* shows spinner while the data is being loaded */}
 				{loading ? <div style={{ "display": "flex", "justifyContent": "center" }}><Spinner /></div> : ''}

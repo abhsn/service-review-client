@@ -17,23 +17,25 @@ function AllServices() {
 	}, []);
 
 	return (
-		<React.Fragment>
+		<div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
 			<Header />
-			<h3 className={styles.title}>All Services</h3>
-			{
-				!services ?
-					<div className={styles.spinnerContainer}>
-						<Spinner />
-					</div>
-					:
-					<section className={styles.serviceContainer}>
-						{
-							services.map(service => <Service key={service._id} service={service} />)
-						}
-					</section>
-			}
+			<section style={{ flexGrow: 1 }}>
+				<h3 className={styles.title}>All Services</h3>
+				{
+					!services ?
+						<div className={styles.spinnerContainer}>
+							<Spinner />
+						</div>
+						:
+						<section className={styles.serviceContainer}>
+							{
+								services.map(service => <Service key={service._id} service={service} />)
+							}
+						</section>
+				}
+			</section>
 			<Footer />
-		</React.Fragment>
+		</div>
 	);
 }
 
