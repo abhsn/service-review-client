@@ -8,12 +8,14 @@ import { setTile } from "../../utils/setTitle";
 import Header from "../Shared/Header/Header";
 import Footer from "../Shared/Footer/Footer";
 import { FiUser } from "react-icons/fi";
+import { toast } from "react-hot-toast";
 
 function ServiceDetails() {
 	const id = useParams().id;
 	const location = useLocation();
 	const [service, setService] = useState({});
 	const [reviews, setReviews] = useState([]);
+	const [sendingReview, setSendingReview] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [des, setDes] = useState(true);
 	const { user } = useContext(AuthContext);
@@ -44,6 +46,7 @@ function ServiceDetails() {
 	}, [id, des]);
 
 	const handleReviewSubmit = e => {
+		setSendingReview(true);
 		e.preventDefault();
 		const date = new Date();
 		const newReview = {
@@ -66,11 +69,15 @@ function ServiceDetails() {
 			.then(res => res.json())
 			.then(data => {
 				if (data.message === 'Unauthorized Access') {
-					console.log('unsuccessful')
+					toast.error('An error occurred. Please try again.')
+					setSendingReview(false);
 				} else {
 					const newArray = [...reviews];
 					newArray.unshift(newReview);
 					setReviews(newArray);
+					setSendingReview(false);
+					toast.success('Successfully added review');
+					e.target.addReview.value = '';
 				}
 			});
 	}
@@ -126,7 +133,7 @@ function ServiceDetails() {
 												<form onSubmit={handleReviewSubmit} className={styles.addReviewForm} id="reviewForm">
 													<textarea className={styles.addReviewField} name="addReview" id="addReview" rows="3" form="reviewForm" required></textarea>
 													<div>
-														<input type="submit" value="Add Review" className={styles.reviewSubmit} />
+														<input type="submit" value="Add Review" className={styles.reviewSubmit} disabled={sendingReview} />
 													</div>
 												</form>
 											</div>
