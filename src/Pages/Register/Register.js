@@ -15,20 +15,20 @@ function Register() {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 
-	const getJWT = (currentUser) => {
-		fetch('https://service-review.onrender.com/jwt', {
-			method: "POST",
-			headers: {
-				"content-type": "application/json"
-			},
-			body: JSON.stringify(currentUser)
-		})
-			.then(res => res.json())
-			.then(data => {
-				setLoading(false);
-				localStorage.setItem('token', data.token);
-			});
-	}
+	// const getJWT = (currentUser) => {
+	// 	fetch('http://localhost:5000/jwt', {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"content-type": "application/json"
+	// 		},
+	// 		body: JSON.stringify(currentUser)
+	// 	})
+	// 		.then(res => res.json())
+	// 		.then(data => {
+	// 			setLoading(false);
+	// 			localStorage.setItem('token', data.token);
+	// 		});
+	// }
 
 	const handleRegister = e => {
 		e.preventDefault();
@@ -54,7 +54,7 @@ function Register() {
 							const currentUser = {
 								uid: result.user.uid
 							}
-							getJWT(currentUser);
+							// getJWT(currentUser);
 							const newObj = { ...result.user };
 							setUser(newObj);
 						})

@@ -6,7 +6,7 @@ function RemoveConfirm({ setRemove, review, reviews, setReviews }) {
 	const { user } = useContext(AuthContext);
 
 	const handleRemove = () => {
-		fetch(`https://service-review.onrender.com/edit-review/${review._id}`, {
+		fetch(`http://localhost:5000/edit-review/${review._id}`, {
 			method: 'DELETE',
 			headers: {
 				"content-type": "application/json",

@@ -22,7 +22,7 @@ function Home() {
 	}
 	// gets limited data
 	useEffect(() => {
-		fetch('https://service-review.onrender.com/services', {
+		fetch('http://localhost:5000/services', {
 			headers: {
 				"isshort": true
 			}

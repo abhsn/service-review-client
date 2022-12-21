@@ -19,7 +19,7 @@ function AddService() {
 			image: url,
 			price: price
 		}
-		fetch('https://service-review.onrender.com/add-service', {
+		fetch('http://localhost:5000/add-service', {
 			method: 'POST',
 			headers: {
 				"content-type": "application/json",

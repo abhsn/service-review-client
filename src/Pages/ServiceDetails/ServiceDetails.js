@@ -23,7 +23,7 @@ function ServiceDetails() {
 
 	// gets service details
 	useEffect(() => {
-		fetch(`https://service-review.onrender.com/services/${id}`)
+		fetch(`http://localhost:5000/services/${id}`)
 			.then(res => res.json())
 			.then(data => {
 				setService(data);
@@ -33,7 +33,7 @@ function ServiceDetails() {
 
 	// gets descending by time reviews by default
 	useEffect(() => {
-		fetch(`https://service-review.onrender.com/reviews/${id}`, {
+		fetch(`http://localhost:5000/reviews/${id}`, {
 			headers: {
 				"descending": des
 			}
@@ -53,7 +53,7 @@ function ServiceDetails() {
 			serviceId: service._id,
 			image: user.photoURL
 		}
-		fetch(`https://service-review.onrender.com/add-review`, {
+		fetch(`http://localhost:5000/add-review`, {
 			method: 'POST',
 			headers: {
 				"content-type": "application/json",

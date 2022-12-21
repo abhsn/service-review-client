@@ -18,7 +18,7 @@ function MyReviews() {
 	const id = useParams().id;
 
 	useEffect(() => {
-		fetch(`https://service-review.onrender.com/my-reviews/${id}`, {
+		fetch(`http://localhost:5000/my-reviews/${id}`, {
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('token')}`
 			}
@@ -33,9 +33,9 @@ function MyReviews() {
 			});
 	}, [id]);
 	return (
-		<div style={{height: '100vh', display: 'flex', flexDirection: 'column'}}>
+		<div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
 			<Header />
-			<div className={styles.myReviewsContainer} style={{flexGrow: 1}}>
+			<div className={styles.myReviewsContainer} style={{ flexGrow: 1 }}>
 				<h3 style={{ "textAlign": "center" }}>My Reviews</h3>
 				{
 					unauthorized ? <h3>Unauthorized Access. Please try to re-<Link to="/login">login</Link>.</h3> : ''
