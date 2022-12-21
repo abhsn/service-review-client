@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import styles from "./RemoveConfirm.module.css";
 
@@ -10,17 +11,17 @@ function RemoveConfirm({ setRemove, review, reviews, setReviews }) {
 			method: 'DELETE',
 			headers: {
 				"content-type": "application/json",
-				"authorization": `Bearer ${localStorage.getItem('token')}`,
+				"authorization": `Bearer ${user.accessToken}`,
 				"userId": `${user.uid}`
 			}
 		})
 			.then(res => res.json())
 			.then(data => {
-				// console.log(data);
 				if (data.message !== 'Unauthorized Access' || data.deletedCount === 1) {
 					const newArray = reviews.filter(r => r._id !== review._id);
 					setReviews(newArray);
 					setRemove(false);
+					toast.success('Successfully removed review');
 				}
 			});
 	}

@@ -11,7 +11,8 @@ import styles from "./MyReviews.module.css"
 function MyReviews() {
 	setTile('My Reviews');
 	const [reviews, setReviews] = useState([]);
-	const { loading, unauthorized, setUnauthorized } = useContext(AuthContext);
+	const { loading, unauthorized, setUnauthorized, user } = useContext(AuthContext);
+	const [loadingReview, setLoadingReview] = useState(true);
 	// setUnauthorized(false);
 	// console.log(unauthorized);
 
@@ -20,15 +21,17 @@ function MyReviews() {
 	useEffect(() => {
 		fetch(`http://localhost:5000/my-reviews/${id}`, {
 			headers: {
-				authorization: `Bearer ${localStorage.getItem('token')}`
+				authorization: `Bearer ${user.accessToken}`
 			}
 		})
 			.then(res => res.json())
 			.then(data => {
 				if (data.message === 'Unauthorized Access' || data.message === 'Forbidden') {
 					setUnauthorized(true);
+					setLoadingReview(false);
 				} else {
 					setReviews(data);
+					setLoadingReview(false);
 				}
 			});
 	}, [id]);
@@ -41,21 +44,19 @@ function MyReviews() {
 					unauthorized ? <h3>Unauthorized Access. Please try to re-<Link to="/login">login</Link>.</h3> : ''
 				}
 				{
-					(reviews.length) ? '' : <p style={{ "textAlign": "center" }}>Nothing to show</p>
+					!setLoadingReview && reviews.length === 0 && <p style={{ "textAlign": "center" }}>Nothing to show</p>
 				}
 				<div className={styles.spinnerContainer}>
 					{
-						loading ? <Spinner /> : ''
+						loading && <Spinner />
 					}
 				</div>
 
 				<div className={styles.reviewsContainer}>
 					{
 						(reviews.length) ?
-							reviews.map(review => <MyReview key={review._id} review={review} setReviews={setReviews} reviews={reviews} />)
-							: ''
+							reviews.map(review => <MyReview key={review._id} review={review} setReviews={setReviews} reviews={reviews} />) : <></>
 					}
-
 				</div>
 			</div>
 			<Footer />
