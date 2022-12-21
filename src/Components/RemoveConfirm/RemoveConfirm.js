@@ -11,7 +11,7 @@ function RemoveConfirm({ setRemove, review, reviews, setReviews }) {
 			method: 'DELETE',
 			headers: {
 				"content-type": "application/json",
-				"authorization": `Bearer ${user.accessToken}`,
+				"authorization": `Bearer ${localStorage.getItem('token')}`,
 				"userId": `${user.uid}`
 			}
 		})

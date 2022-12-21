@@ -61,7 +61,7 @@ function ServiceDetails() {
 			method: 'POST',
 			headers: {
 				"content-type": "application/json",
-				"authorization": `Bearer ${user.accessToken}`,
+				"authorization": `Bearer ${localStorage.getItem('token')}`,
 				"uid": user.uid
 			},
 			body: JSON.stringify(newReview)

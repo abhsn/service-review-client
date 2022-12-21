@@ -18,20 +18,20 @@ function Login() {
 	const navigate = useNavigate();
 	const from = location.state?.from?.pathname || "/";
 
-	// const getJWT = (currentUser) => {
-	// 	fetch('https://service-review-server-nrebl34n9-abhsn.vercel.app/jwt', {
-	// 		method: "POST",
-	// 		headers: {
-	// 			"content-type": "application/json"
-	// 		},
-	// 		body: JSON.stringify(currentUser)
-	// 	})
-	// 		.then(res => res.json())
-	// 		.then(data => {
-	// 			setLoading(false);
-	// 			localStorage.setItem('token', data.token);
-	// 		});
-	// }
+	const getJWT = (currentUser) => {
+		fetch('http://service-review-server-vert.vercel.app/jwt', {
+			method: "POST",
+			headers: {
+				"content-type": "application/json"
+			},
+			body: JSON.stringify(currentUser)
+		})
+			.then(res => res.json())
+			.then(data => {
+				setLoading(false);
+				localStorage.setItem('token', data.token);
+			});
+	}
 
 	const handleLogIn = () => {
 		setLoading(true);
@@ -39,16 +39,16 @@ function Login() {
 		const password = document.getElementById('password').value;
 		logIn(email, password)
 			.then(result => {
-				// const user = result.user;
+				const user = result.user;
 
-				// const currentUser = {
-				// 	uid: user.uid
-				// }
+				const currentUser = {
+					uid: user.uid
+				}
 
 				setLoading(false);
 
 				// get jwt token
-				// getJWT(currentUser);
+				getJWT(currentUser);
 
 				navigate(from, { replace: true });
 			})
@@ -73,7 +73,7 @@ function Login() {
 				setLoading(false);
 
 				// get jwt token
-				// getJWT(currentUser);
+				getJWT(currentUser);
 
 				navigate(from, { replace: true });
 			}

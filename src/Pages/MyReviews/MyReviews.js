@@ -25,9 +25,9 @@ function MyReviews() {
 	const id = useParams().id;
 
 	useEffect(() => {
-		fetch(`https://service-review-server-nrebl34n9-abhsn.vercel.app/my-reviews/${id}`, {
+		fetch(`https://service-review-server-vert.vercel.app/my-reviews/${id}`, {
 			headers: {
-				authorization: `Bearer ${user.accessToken}`
+				authorization: `Bearer ${localStorage.getItem('token')}`
 			}
 		})
 			.then(res => res.json())

@@ -29,7 +29,7 @@ function MyReview({ review, reviews, setReviews }) {
 			method: 'PUT',
 			headers: {
 				"content-type": "application/json",
-				"authorization": `Bearer ${user.accessToken}`,
+				"authorization": `Bearer ${localStorage.getItem('token')}`,
 				"userId": `${user.uid}`,
 			},
 			body: JSON.stringify({ newComment: editedComment, commentId: review._id })
