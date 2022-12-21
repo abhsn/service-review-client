@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import Confirm from "../Confirm/Confirm";
 import RemoveConfirm from "../RemoveConfirm/RemoveConfirm";
@@ -39,6 +40,7 @@ function MyReview({ review, reviews, setReviews }) {
 					const newObj = { ...newReview };
 					newObj.comment = editedComment;
 					setNewReview(newObj);
+					toast.success('Successfully edited review');
 				};
 			});
 	}
