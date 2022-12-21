@@ -3,7 +3,6 @@ import styles from "./Review.module.css";
 
 function Review({ review }) {
 	const { name, comment, time, userId, image } = review;
-	console.log(time);
 	const date = new Date(parseFloat(time));
 	const month = date.toLocaleString('default', { month: 'short' });
 

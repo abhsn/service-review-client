@@ -15,7 +15,6 @@ function Home() {
 	const [services, setServices] = useState(null);
 	const [showMenu, setShowMenu] = useState(false);
 	const { user, logOut } = useContext(AuthContext);
-	console.log(user);
 	const handleLogout = () => {
 		logOut().then(() => {
 			// clears local storage when user is logged out
@@ -24,7 +23,7 @@ function Home() {
 	}
 	// gets limited data
 	useEffect(() => {
-		fetch('http://localhost:5000/services', {
+		fetch('https://service-review-server-nrebl34n9-abhsn.vercel.app/services', {
 			headers: {
 				"isshort": true
 			}

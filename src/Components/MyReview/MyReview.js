@@ -17,7 +17,7 @@ function MyReview({ review, reviews, setReviews }) {
 	const { user } = useContext(AuthContext);
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/services/${review.serviceId}`)
+		fetch(`https://service-review-server-nrebl34n9-abhsn.vercel.app/services/${review.serviceId}`)
 			.then(res => res.json())
 			.then(data => setReviewDetails(data));
 	}, [review]);
@@ -25,7 +25,7 @@ function MyReview({ review, reviews, setReviews }) {
 	const handleEditSubmit = e => {
 		e.preventDefault();
 		const editedComment = e.target.editField.value;
-		fetch(`http://localhost:5000/edit-review/${review._id}`, {
+		fetch(`https://service-review-server-nrebl34n9-abhsn.vercel.app/edit-review/${review._id}`, {
 			method: 'PUT',
 			headers: {
 				"content-type": "application/json",

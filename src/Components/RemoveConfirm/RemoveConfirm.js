@@ -7,7 +7,7 @@ function RemoveConfirm({ setRemove, review, reviews, setReviews }) {
 	const { user } = useContext(AuthContext);
 
 	const handleRemove = () => {
-		fetch(`http://localhost:5000/edit-review/${review._id}`, {
+		fetch(`https://service-review-server-nrebl34n9-abhsn.vercel.app/edit-review/${review._id}`, {
 			method: 'DELETE',
 			headers: {
 				"content-type": "application/json",

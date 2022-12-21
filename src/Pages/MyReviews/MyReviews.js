@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import MyReview from "../../Components/MyReview/MyReview";
 import Spinner from "../../Components/Spinner/Spinner";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
@@ -11,15 +11,21 @@ import styles from "./MyReviews.module.css"
 function MyReviews() {
 	setTile('My Reviews');
 	const [reviews, setReviews] = useState([]);
-	const { loading, unauthorized, setUnauthorized, user } = useContext(AuthContext);
+	const { loading, user, unauthorized, setUnauthorized, logOut } = useContext(AuthContext);
 	const [loadingReview, setLoadingReview] = useState(true);
-	// setUnauthorized(false);
-	// console.log(unauthorized);
+	const navigate = useNavigate();
+
+	const handleRelogin = () => {
+		logOut()
+			.then(() => {
+				navigate('/login');
+			})
+	}
 
 	const id = useParams().id;
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/my-reviews/${id}`, {
+		fetch(`https://service-review-server-nrebl34n9-abhsn.vercel.app/my-reviews/${id}`, {
 			headers: {
 				authorization: `Bearer ${user.accessToken}`
 			}
@@ -32,6 +38,7 @@ function MyReviews() {
 				} else {
 					setReviews(data);
 					setLoadingReview(false);
+					setUnauthorized(false);
 				}
 			});
 	}, [id]);
@@ -41,7 +48,7 @@ function MyReviews() {
 			<div className={styles.myReviewsContainer} style={{ flexGrow: 1 }}>
 				<h3 style={{ "textAlign": "center" }}>My Reviews</h3>
 				{
-					unauthorized ? <h3>Unauthorized Access. Please try to re-<Link to="/login">login</Link>.</h3> : ''
+					unauthorized ? <h3 style={{ textAlign: 'center' }}>Unauthorized Access. Please try to re-<Link onClick={handleRelogin}>login</Link>.</h3> : ''
 				}
 				{
 					!setLoadingReview && reviews.length === 0 && <p style={{ "textAlign": "center" }}>Nothing to show</p>

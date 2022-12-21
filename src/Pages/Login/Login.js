@@ -19,7 +19,7 @@ function Login() {
 	const from = location.state?.from?.pathname || "/";
 
 	// const getJWT = (currentUser) => {
-	// 	fetch('http://localhost:5000/jwt', {
+	// 	fetch('https://service-review-server-nrebl34n9-abhsn.vercel.app/jwt', {
 	// 		method: "POST",
 	// 		headers: {
 	// 			"content-type": "application/json"
