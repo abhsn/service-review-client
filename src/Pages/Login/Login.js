@@ -92,7 +92,7 @@ function Login() {
 			{
 				!loading ?
 					<div className={styles.loginContainer}>
-						<img className={styles.loginImage} src="https://downloadscdn5.freepik.com/download_vector/jpg/114/114360/4/4957/4957136_4957136.jpg?token=exp=1668081663~hmac=ac3c8303a6094600c794c25418a3bbcf" alt="" />
+						{/* <img className={styles.loginImage} src="https://downloadscdn5.freepik.com/download_vector/jpg/114/114360/4/4957/4957136_4957136.jpg?token=exp=1668081663~hmac=ac3c8303a6094600c794c25418a3bbcf" alt="" /> */}
 						<div className={styles.formContainer}>
 							<form className={styles.form} onSubmit={e => e.preventDefault()}>
 								<h3 className={styles.formTitle}>Login</h3>

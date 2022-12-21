@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Spinner from "../../Components/Spinner/Spinner";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { setTile } from "../../utils/setTitle";
+import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
 import styles from "./Register.module.css";
 
@@ -73,7 +74,7 @@ function Register() {
 			<Header />
 			{!loading ?
 				<div className={styles.registerContainer}>
-					<img className={styles.loginImage} src="https://downloadscdn5.freepik.com/download_vector/jpg/114/114360/4/4957/4957136_4957136.jpg?token=exp=1668081663~hmac=ac3c8303a6094600c794c25418a3bbcf" alt="" />
+					{/* <img className={styles.loginImage} src="https://downloadscdn5.freepik.com/download_vector/jpg/114/114360/4/4957/4957136_4957136.jpg?token=exp=1668081663~hmac=ac3c8303a6094600c794c25418a3bbcf" alt="" /> */}
 					<div className={styles.formContainer}>
 						<form className={styles.form} onSubmit={handleRegister}>
 							<h3 className={styles.formTitle}>Register</h3>
@@ -115,6 +116,7 @@ function Register() {
 					<Spinner />
 				</div>
 			}
+			<Footer />
 		</React.Fragment>
 	);
 }
